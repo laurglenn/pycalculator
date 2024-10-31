@@ -3,6 +3,7 @@ import streamlit as st
 st.title("Mortgage Repayments Calculator")
 
 st.write("### Input Data")
+#create 2 columns
 col1, col2 = st.columns(2)
 #Get inputs from users and set default values
 home_value = col1.number_input("Home Value", min_value=0, value=500000)
@@ -23,3 +24,10 @@ monthly_payment = (
 # Display the repayments.
 total_payments = monthly_payment * number_of_payments
 total_interest = total_payments - loan_amount
+
+st.write("### Repayments")
+col1, col2, col3 = st.columns(3)
+#Add metric to make the labels bolder
+col1.metric(label="Monthly Repayments", value=f"${monthly_payment:,.2f}")
+col2.metric(label="Total Repayments", value=f"${total_payments:,.0f}")
+col3.metric(label="Total Interest", value=f"${total_interest:,.0f}")
