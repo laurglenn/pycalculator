@@ -60,4 +60,7 @@ df = pd.DataFrame(
     columns=["Month", "Payment", "Principal", "Interest", "Remaining Balance", "Year"],
 )
 
-
+# Display the data-frame as a chart.
+st.write("### Payment Schedule")
+payments_df = df[["Year", "Remaining Balance"]].groupby("Year").min()
+st.line_chart(payments_df)
